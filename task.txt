@@ -1,0 +1,7 @@
+- integrasi raja ongkir akun customer => DONE
+- halaman bayar => DONE
+- beresin halaman result
+- beresin auto update status
+- integrasi midtrans
+- slider foto => DONE
+- data kategori
