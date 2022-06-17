@@ -107,7 +107,7 @@
 					?>
 
 					<div class="form-group">
-						<label>Nama User</label>
+						<label>Nama Pengguna</label>
 						<input type="text" name="nama_kategori" value="<?= $value->nama_kategori ?>" class="form-control" placeholder="Nama Kategori" required>
 					</div>
 
@@ -158,3 +158,14 @@
 		<!-- /.modal-dialog -->
 	</div>
 <?php } ?>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		var table = $('#example1').DataTable({
+                searching: false,
+                paging: false
+		});
+		
+		table.destroy();
+	});
+</script>

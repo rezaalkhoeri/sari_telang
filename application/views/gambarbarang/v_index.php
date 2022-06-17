@@ -54,3 +54,14 @@
 	</div>
 	<!-- /.card -->
 </div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		var table = $('#example1').DataTable({
+                searching: false,
+                paging: false
+		});
+		
+		table.destroy();
+	});
+</script>

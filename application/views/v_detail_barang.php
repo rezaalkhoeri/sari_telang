@@ -42,10 +42,13 @@
 				?>
 				<div class="mt-4">
 					<div class="row">
-						<div class="col-sm-2">
+						<div class="col-sm-3">
 							<input type="number" name="qty" class="form-control" value="1" min="1">
 						</div>
-						<div class=" col-sm-8">
+						<div class="col-sm-3">
+						    <p><?= $barang->stok ?> barang tersisa</p>
+						</div>
+						<div class=" col-sm-6">
 							<button type="submit" class="btn btn-primary btn-flat swalDefaultSuccess">
 								<i class="fas fa-cart-plus fa-lg mr-2"></i>
 								Tambahkan ke keranjang

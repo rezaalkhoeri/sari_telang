@@ -41,7 +41,7 @@
 								<h4 class="text-muted my-3">Profil</h4>
 								<div class="col-xs-12 col-sm-6">
 									<div class="form-group">
-										<label for="nama">Username : </label>
+										<label for="nama">Nama Akun : </label>
 										<input type="text" name="username" id="username" value="<?= $value->nama_pelanggan ?>" class="form-control" placeholder="Masukan Username" required="reuqired" />
 									</div>
 								</div>
@@ -53,7 +53,7 @@
 								</div>
 								<div class="col-xs-12 col-sm-6">
 									<div class="form-group">
-										<label for="password">Password</label>
+										<label for="password">Kata Sandi</label>
 										<input type="password" name="password" id="password" class="form-control" placeholder="********" />
 										<span class="text-danger">Tidak perlu diisi jika tidak ingin diganti!</span>
 									</div>

@@ -90,4 +90,11 @@ class M_transaksi extends CI_Model
 		$this->db->where('tbl_transaksi.no_order', $no_order);
 		return $this->db->get()->result();
 	}
+	
+	public function getTransaksiByID($id)
+	{
+		$this->db->from('tbl_transaksi');
+		$this->db->where('tbl_transaksi.id_transaksi', $id);
+		return $this->db->get()->result();
+	}	
 }

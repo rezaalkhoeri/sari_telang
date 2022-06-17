@@ -16,7 +16,7 @@ class Home extends CI_Controller
 	public function index()
 	{
 		$data = array(
-			'title' => 'Home',
+			'title' => 'Beranda',
 			'barang' => $this->m_home->get_all_data(),
 			'isi' => 'v_home',
 		);

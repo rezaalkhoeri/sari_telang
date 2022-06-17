@@ -7,6 +7,8 @@
 	<title>Online Shop | <?= $title ?></title>
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="<?= base_url() ?>assets/gambar/logo3.png">	
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="<?= base_url() ?>template/plugins/fontawesome-free/css/all.min.css">
@@ -22,21 +24,21 @@
 	<!-- Google Font: Source Sans Pro -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
+	<script type="text/javascript" src="https://app.midtrans.com/snap/snap.js" data-client-key="Mid-client-63NOCLaEav-K9ymZ"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<!-- jQuery -->
 	<script src="<?= base_url() ?>template/plugins/jquery/jquery.min.js"></script>
 	<!-- Bootstrap 4 -->
 	<script src="<?= base_url() ?>template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- AdminLTE App -->
+	<script src="<?= base_url() ?>template/dist/js/adminlte.min.js"></script>
+	<!-- AdminLTE for demo purposes -->
+	<script src="<?= base_url() ?>template/dist/js/demo.js"></script>
 	<!-- DataTables -->
 	<script src="<?= base_url() ?>template/plugins/datatables/jquery.dataTables.min.js"></script>
 	<script src="<?= base_url() ?>template/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 	<script src="<?= base_url() ?>template/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 	<script src="<?= base_url() ?>template/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-	<!-- AdminLTE App -->
-	<script src="<?= base_url() ?>template/dist/js/adminlte.min.js"></script>
-	<!-- AdminLTE for demo purposes -->
-	<script src="<?= base_url() ?>template/dist/js/demo.js"></script>
 
-	<script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-xE1EY5ArEQyyK0jL"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
 </head>

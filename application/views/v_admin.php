@@ -54,6 +54,6 @@
 		<div class="icon">
 			<i class="fas fa-list"></i>
 		</div>
-		<a href="<?= base_url('kategori') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+		<a href="<?= base_url('kategori') ?>" class="small-box-footer">Lebih banyak<i class="fas fa-arrow-circle-right"></i></a>
 	</div>
 </div>

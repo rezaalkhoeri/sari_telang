@@ -39,7 +39,7 @@ class Gambarbarang extends CI_Controller
 			$field_name = "gambar";
 			if (!$this->upload->do_upload($field_name)) {
 				$data = array(
-					'title' => 'Add Gambar Barang',
+					'title' => 'Tambah Gambar Barang',
 					'error_upload' => $this->upload->display_errors(),
 					'barang'  => $this->m_barang->get_data($id_barang),
 					'gambar' => $this->m_gambarbarang->get_gambar($id_barang),
@@ -63,7 +63,7 @@ class Gambarbarang extends CI_Controller
 		}
 
 		$data = array(
-			'title' => 'Add Gambar Barang',
+			'title' => 'Tambah Gambar Barang',
 			'barang'  => $this->m_barang->get_data($id_barang),
 			'gambar' => $this->m_gambarbarang->get_gambar($id_barang),
 			'isi' => 'gambarbarang/v_add',

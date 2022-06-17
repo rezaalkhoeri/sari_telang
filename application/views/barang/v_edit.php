@@ -18,7 +18,7 @@
 				<h5><i class="icon fas fa-info"></i>' . $error_upload . '</h5> </div>';
 			}
 
-			echo form_open_multipart('barang/edit/' . $barang->id_barang) ?>
+			echo form_open_multipart('barang/update/' . $barang->id_barang) ?>
 			<div class="form-group">
 				<label>Nama Barang</label>
 				<input name="nama_barang" class="form-control" placeholder="Nama Barang" value="<?= $barang->nama_barang  ?>">
@@ -47,6 +47,12 @@
 						<input type="number" name="berat" min="0" class="form-control" placeholder="Berat Dalam Satuan Gram" value="<?= $barang->berat ?>">
 					</div>
 				</div>
+				<div class="col-sm-4">
+					<div class="form-group">
+						<label>Stok</label>
+						<input type="number" name="stok" min="0" class="form-control" placeholder="Stok Barang" value="<?= set_value('stok') ?>">
+					</div>
+				</div>				
 			</div>
 
 			<div class="form-group">

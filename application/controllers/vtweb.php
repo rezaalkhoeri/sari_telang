@@ -22,7 +22,8 @@ class Vtweb extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
-        $params = array('server_key' => 'your_server_key', 'production' => false);
+// 		$params = array('server_key' => 'SB-Mid-server-8kl8nkDM14KMzy4NlucWjijX', 'production' => false);
+		$params = array('server_key' => 'Mid-server-CJuLgM5gHFpMoZmD2Mnx8Gyz', 'production' => true);
 		$this->load->library('veritrans');
 		$this->veritrans->config($params);
 		$this->load->helper('url');

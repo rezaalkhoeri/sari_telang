@@ -16,7 +16,7 @@
         <!-- Table row -->
         <div class="row">
             <div class="col-12 table-responsive">
-                <table class="table table-striped">
+                <table class="table table-striped" id="detail_pesanan">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -45,7 +45,7 @@
 
                     </tbody>
                 </table>
-                <h3> Grand Total : Rp. <?= number_format($grand_total, 0) ?></h3>
+                <h3 style="float: right;"> Total : Rp. <?= number_format($grand_total, 0) ?></h3>
             </div>
             <!-- /.col -->
         </div>
@@ -63,4 +63,9 @@
     </div>
     <!-- /.invoice -->
 </div><!-- /.col -->
-</div><!-- /.row -->
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#detail_pesanan').DataTable();
+    });
+</script>

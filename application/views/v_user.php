@@ -1,7 +1,7 @@
 <div class="col-md-12">
 	<div class="card card-primary">
 		<div class="card-header">
-			<h3 class="card-title">Data User</h3>
+			<h3 class="card-title">Data Pengguna</h3>
 
 			<div class="card-tools">
 				<button data-toggle="modal" data-target="#add" type="button" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Tambah</button>
@@ -25,9 +25,9 @@
 				<thead class="text-center">
 					<tr>
 						<th>No</th>
-						<th>Nama User</th>
-						<th>Username</th>
-						<th>Password</th>
+						<th>Nama Pengguna</th>
+						<th>Nama Akun</th>
+						<th>Kata Sandi</th>
 						<th>Level</th>
 						<th>Aksi</th>
 					</tr>
@@ -67,7 +67,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 class="modal-title">Tambah User</h4>
+				<h4 class="modal-title">Tambah Pengguna</h4>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -79,22 +79,22 @@
 				?>
 
 				<div class="form-group">
-					<label>Nama User</label>
+					<label>Nama Pengguna</label>
 					<input type="text" name="nama_user" class="form-control" placeholder="Nama User" required>
 				</div>
 
 				<div class="form-group">
-					<label>Username</label>
+					<label>Nama Akun</label>
 					<input type="text" name="username" class="form-control" placeholder="Username" required>
 				</div>
 
 				<div class="form-group">
-					<label>Password</label>
+					<label>Kata Sandi</label>
 					<input type="text" name="password" class="form-control" placeholder="Password" required>
 				</div>
 
 				<div class="form-group">
-					<label>Level User</label>
+					<label>Level Pengguna</label>
 					<select name="level_user" class="form-control">
 						<option value="1" selected>Admin</option>
 						<option value="2">User</option>
@@ -135,22 +135,22 @@
 					?>
 
 					<div class="form-group">
-						<label>Nama User</label>
+						<label>Nama Pengguna</label>
 						<input type="text" name="nama_user" value="<?= $value->nama_user ?>" class="form-control" placeholder="Nama User" required>
 					</div>
 
 					<div class="form-group">
-						<label>Username</label>
+						<label>Nama Akun</label>
 						<input type="text" name="username" value="<?= $value->username ?>" class="form-control" placeholder="Username" required>
 					</div>
 
 					<div class="form-group">
-						<label>Password</label>
+						<label>Kata Akun</label>
 						<input type="text" name="password" value="<?= $value->password ?>" class="form-control" placeholder="Password" required>
 					</div>
 
 					<div class="form-group">
-						<label>Level User</label>
+						<label>Level Pengguna</label>
 						<select name="level_user" class="form-control">
 							<option value="1" <?php if ($value->level_user == 1) {
 													echo 'selected';

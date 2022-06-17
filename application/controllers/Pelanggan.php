@@ -65,7 +65,7 @@ class Pelanggan extends CI_Controller
 			$this->pelanggan_login->login($email, $password);
 		}
 		$data = array(
-			'title' => 'Login Pelanggan',
+			'title' => 'Masuk Pelanggan',
 			'isi' => 'v_login_pelanggan',
 		);
 		$this->load->view('layout/v_wrapper_frontend', $data, FALSE);

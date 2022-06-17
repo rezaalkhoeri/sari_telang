@@ -33,14 +33,35 @@
 					<table class="table">
 						<tr>
 							<th>No Order</th>
+							<th>Detail Barang</th>
 							<th>Tanggal</th>
-							<th>Expedisi</th>
+							<th>Kurir</th>
 							<th>Total Bayar</th>
 							<th></th>
 						</tr>
-						<?php foreach ($pesanan as $key => $value) { ?>
+						<?php foreach ($pesanan_masuk['pesanan'] as $key => $value) { ?>
 							<tr>
 								<td><?= $value->no_order ?></td>
+								<td>
+									<div class="row">
+										<table class="col-12 mt-2">
+											<?php for ($i = 0; $i < count($pesanan_masuk['detail'][$key]); $i++) { ?>
+												<tr>
+													<td width="120px">
+														<img class="" src="<?= base_url('assets/gambar/' . $pesanan_masuk['detail'][$key][$i]->gambar) ?>" alt="Card image cap" width="90px" height="100%" style="object-fit:scale-down;">
+													</td>
+													<td width="220px">
+														<h4 class="card-title"><?php echo $pesanan_masuk['detail'][$key][$i]->nama_barang ?></h4>
+														<p class="card-text"> Rp. <?php echo number_format($pesanan_masuk['detail'][$key][$i]->harga) ?> </p>
+													</td>
+													<td>
+														<small class="text-muted"> x <?php echo $pesanan_masuk['detail'][$key][$i]->qty ?> </small>
+													</td>
+												</tr>
+											<?php } ?>
+										</table>
+									</div>
+								</td>
 								<td><?= $value->tgl_order ?></td>
 								<td>
 									<b><?= $value->expedisi ?></b><br>
@@ -72,14 +93,35 @@
 					<table class="table">
 						<tr>
 							<th>No Order</th>
+							<th>Detail Barang</th>
 							<th>Tanggal</th>
-							<th>Expedisi</th>
+							<th>Kurir</th>
 							<th>Total Bayar</th>
 							<th></th>
 						</tr>
-						<?php foreach ($pesanan_diproses as $key => $value) { ?>
+						<?php foreach ($diproses['pesanan'] as $key => $value) { ?>
 							<tr>
 								<td><?= $value->no_order ?></td>
+								<td>
+									<div class="row">
+										<table class="col-12 mt-2">
+											<?php for ($i = 0; $i < count($diproses['detail'][$key]); $i++) { ?>
+												<tr>
+													<td width="120px">
+														<img class="" src="<?= base_url('assets/gambar/' . $diproses['detail'][$key][$i]->gambar) ?>" alt="Card image cap" width="90px" height="100%" style="object-fit:scale-down;">
+													</td>
+													<td width="220px">
+														<h4 class="card-title"><?php echo $diproses['detail'][$key][$i]->nama_barang ?></h4>
+														<p class="card-text"> Rp. <?php echo number_format($diproses['detail'][$key][$i]->harga) ?> </p>
+													</td>
+													<td>
+														<small class="text-muted"> x <?php echo $diproses['detail'][$key][$i]->qty ?> </small>
+													</td>
+												</tr>
+											<?php } ?>
+										</table>
+									</div>
+								</td>
 								<td><?= $value->tgl_order ?></td>
 								<td>
 									<b><?= $value->expedisi ?></b><br>
@@ -108,14 +150,35 @@
 					<table class="table">
 						<tr>
 							<th>No Order</th>
+							<th>Detail Barang</th>
 							<th>Tanggal</th>
-							<th>Expedisi</th>
+							<th>Kurir</th>
 							<th>Total Bayar</th>
 							<th>No Resi</th>
 						</tr>
-						<?php foreach ($pesanan_dikirim as $key => $value) { ?>
+						<?php foreach ($dikirim['pesanan'] as $key => $value) { ?>
 							<tr>
 								<td><?= $value->no_order ?></td>
+								<td>
+									<div class="row">
+										<table class="col-12 mt-2">
+											<?php for ($i = 0; $i < count($dikirim['detail'][$key]); $i++) { ?>
+												<tr>
+													<td width="120px">
+														<img class="" src="<?= base_url('assets/gambar/' . $dikirim['detail'][$key][$i]->gambar) ?>" alt="Card image cap" width="90px" height="100%" style="object-fit:scale-down;">
+													</td>
+													<td width="220px">
+														<h4 class="card-title"><?php echo $dikirim['detail'][$key][$i]->nama_barang ?></h4>
+														<p class="card-text"> Rp. <?php echo number_format($dikirim['detail'][$key][$i]->harga) ?> </p>
+													</td>
+													<td>
+														<small class="text-muted"> x <?php echo $dikirim['detail'][$key][$i]->qty ?> </small>
+													</td>
+												</tr>
+											<?php } ?>
+										</table>
+									</div>
+								</td>
 								<td><?= $value->tgl_order ?></td>
 								<td>
 									<b><?= $value->expedisi ?></b><br>
@@ -140,14 +203,35 @@
 					<table class="table">
 						<tr>
 							<th>No Order</th>
+							<th>Detail Barang</th>
 							<th>Tanggal</th>
-							<th>Expedisi</th>
+							<th>Kurir</th>
 							<th>Total Bayar</th>
 							<th>No Resi</th>
 						</tr>
-						<?php foreach ($pesanan_selesai as $key => $value) { ?>
+						<?php foreach ($selesai['pesanan'] as $key => $value) { ?>
 							<tr>
 								<td><?= $value->no_order ?></td>
+								<td>
+									<div class="row">
+										<table class="col-12 mt-2">
+											<?php for ($i = 0; $i < count($selesai['detail'][$key]); $i++) { ?>
+												<tr>
+													<td width="120px">
+														<img class="" src="<?= base_url('assets/gambar/' . $selesai['detail'][$key][$i]->gambar) ?>" alt="Card image cap" width="90px" height="100%" style="object-fit:scale-down;">
+													</td>
+													<td width="220px">
+														<h4 class="card-title"><?php echo $selesai['detail'][$key][$i]->nama_barang ?></h4>
+														<p class="card-text"> Rp. <?php echo number_format($selesai['detail'][$key][$i]->harga) ?> </p>
+													</td>
+													<td>
+														<small class="text-muted"> x <?php echo $selesai['detail'][$key][$i]->qty ?> </small>
+													</td>
+												</tr>
+											<?php } ?>
+										</table>
+									</div>
+								</td>
 								<td><?= $value->tgl_order ?></td>
 								<td>
 									<b><?= $value->expedisi ?></b><br>
@@ -174,7 +258,7 @@
 	</div>
 </div>
 
-<?php foreach ($pesanan as $key => $value) { ?>
+<?php foreach ($pesanan_masuk['pesanan'] as $key => $value) { ?>
 
 	<!-- modal cek bukti pembayaran -->
 	<div class="modal fade" id="cek<?= $value->id_transaksi ?>">
@@ -195,7 +279,7 @@
 								<td><?= $value->order_id ?></td>
 							</tr>
 							<tr>
-								<th>Payment Type</th>
+								<th>Tipe Pembayaran</th>
 								<th>:</th>
 								<td><?= $value->payment_type ?></td>
 							</tr>
@@ -206,18 +290,18 @@
 									<td><?= $value->bank ?></td>
 								</tr>
 								<tr>
-									<th>VA Number</th>
+									<th>Nomor Virtual Akun</th>
 									<th>:</th>
 									<td><?= $value->va_number ?></td>
 								</tr>
 							<?php }  ?>
 							<tr>
-								<th>Transaction Time</th>
+								<th>Waktu Transaksi</th>
 								<th>:</th>
 								<td><?= $value->transaction_time ?></td>
 							</tr>
 							<tr>
-								<th>Transaction Status</th>
+								<th>Status Transaksi</th>
 								<th>:</th>
 								<td><?= $value->transaction_status ?></td>
 							</tr>
@@ -265,7 +349,7 @@
 <?php } ?>
 
 
-<?php foreach ($pesanan_diproses as $key => $value) { ?>
+<?php foreach ($diproses['pesanan'] as $key => $value) { ?>
 	<div class="modal fade" id="kirim<?= $value->id_transaksi ?>">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -280,7 +364,7 @@
 					<?php echo form_open('admin/kirim/' . $value->id_transaksi) ?>
 					<table class="table">
 						<tr>
-							<th>Expedisi</th>
+							<th>Kurir</th>
 							<th>:</th>
 							<th><?= $value->expedisi ?></th>
 						</tr>

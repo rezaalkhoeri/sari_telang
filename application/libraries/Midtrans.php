@@ -14,7 +14,7 @@ class Midtrans
 	 * false for sandbox mode
 	 * @static
 	 */
-	public static $isProduction = false;
+	public static $isProduction = true;
 
 	/**
 	 * Default options for every request

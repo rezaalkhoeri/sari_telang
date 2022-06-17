@@ -6,7 +6,7 @@
 		<div class=" register-box">
 			<div class="card">
 				<div class="card-body register-card-body">
-					<p class="login-box-msg">Register Pelanggan Baru</p>
+					<p class="login-box-msg">Daftar Pelanggan Baru</p>
 
 					<?php
 					echo validation_errors('<div class="alert alert-warning alert-dismissible">
@@ -60,7 +60,7 @@
 						</div>
 						<!-- /.col -->
 						<div class="col-4">
-							<button type="submit" class="btn btn-primary btn-block">Register</button>
+							<button type="submit" class="btn btn-primary btn-block">Daftar</button>
 						</div>
 						<!-- /.col -->
 					</div>

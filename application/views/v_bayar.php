@@ -1,27 +1,41 @@
 <div class="row">
-	<div class="col-sm-6">
+	<div class="col-sm-12">
 		<div class="card card-primary">
 			<div class="card-header">
 				<h3 class="card-title">No Rekening Toko</h3>
 			</div>
 			<div class="card-body">
 
-				<p>Silahkan Transfer Uang Ke No Rekening Di Bawah Ini Sebesar :
-				<h1 class="text-primary">Rp. <?= number_format($pesanan->total_bayar, 0) ?>.-</h1>
-				</p><br>
+				
 				<table class="table">
 					<tr>
-						<th>Bank</th>
-						<th>No Rekening</th>
-						<th>Atas Nama</th>
+						<th>Nama Produk</th>
+						<th>Harga</th>
+						<th>Qty</th>
+						<th>Jumlah</th>
 					</tr>
-					<?php foreach ($rekening as $key => $value) { ?>
+					<tbody>
+						<?php foreach ($barang as $key => $value) { ?>
+							<tr>
+								<td><?= $value->nama_barang ?></td>
+								<td>Rp. <?= number_format($value->harga) ?></td>
+								<td><?= $value->qty ?></td>
+								<td>Rp. <?= number_format(($value->harga * $value->qty)) ?></td>
+							</tr>
+						<?php } ?>
 						<tr>
-							<td><?= $value->nama_bank ?></td>
-							<td><?= $value->no_rek ?></td>
-							<td><?= $value->atas_nama ?></td>
+							<td colspan="3"> <b> PPn (10%) </b></td>
+							<td> <b> Rp. <?= ((10 * $value->harga  * $value->qty) / 100) ?> </b> </td>
 						</tr>
-					<?php } ?>
+						<tr>
+							<td colspan="3"> <b> Ongkos Kirim (<?= $pesanan->expedisi ?> | <?= $pesanan->paket ?>) </b></td>
+							<td> <b>Rp.  <?= number_format($pesanan->ongkir) ?> </b> </td>
+						</tr>
+						<tr>
+							<td colspan="3"><b> Total </b></td>
+							<td> <b>Rp. <?= number_format($pesanan->total_bayar) ?> </b></td>
+						</tr>
+					</tbody>
 
 				</table>
 				<form id="payment-form" method="post" action="<?= site_url() ?>snap/finish">
@@ -34,11 +48,11 @@
 				</form>
 			</div>
 			<div class="card-footer">
-				<p> Atau lakukan pembayaran langsung dengan klik tombol dibawah ini
-					<button id="pay-button" class="btn btn-primary">Bayar</button>
+				<button id="pay-button" class="btn btn-primary">Bayar Sekarang</button>
 			</div>
 		</div>
 	</div>
+	<?php /*
 	<div class="col-sm-6">
 		<div class="card card-primary">
 			<div class="card-header">
@@ -73,13 +87,13 @@
 			<!-- /.card-body -->
 
 			<div class="card-footer">
-				<button type="submit" class="btn btn-primary">Submit</button>
+				<button type="submit" class="btn btn-primary">Simpan</button>
 				<a href="<?= base_url('pesanan_saya') ?>" class="btn btn-success">Kembali</a>
 			</div>
 			<?php echo form_close() ?>
 		</div>
 	</div>
-
+	*/ ?>
 </div>
 
 <script type="text/javascript">
@@ -95,18 +109,24 @@
 		sendData.email = email
 		sendData.totalBayar = totalBayar
 
-		console.log(sendData);
+// 		console.log(sendData);
+
+		$.ajaxSetup({
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			}
+		});
 
 		$.ajax({
 			type: 'POST',
-			url: '<?= site_url() ?>/snap/token',
+			url: '<?= site_url() ?>snap/token',
 			data: "datanya=" + JSON.stringify(sendData),
 			cache: false,
-
+			dataType:'json',
 			success: function(data) {
 				//location = data;
 
-				console.log('token = ' + data);
+				// console.log('token = ' + data);
 
 				var resultType = document.getElementById('result-type');
 				var resultData = document.getElementById('result-data');

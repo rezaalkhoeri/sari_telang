@@ -29,6 +29,7 @@
 						<th>Kategori</th>
 						<th>Harga</th>
 						<th>Gambar</th>
+						<th>Stok</th>
 						<th>Aksi</th>
 					</tr>
 				</thead>
@@ -44,9 +45,17 @@
 							<td class="text-center"><?= $value->nama_kategori ?></td>
 							<td class="text-center">Rp. <?= number_format($value->harga, 0) ?></td>
 							<td class="text-center"><img src="<?= base_url('assets/gambar/' . $value->gambar) ?>" width="150px"></td>
+							<td class="text-center"><?= $value->stok ?></td>
 							<td class="text-center">
 								<a href="<?= base_url('barang/edit/' . encrypt_url($value->id_barang)) ?>" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
 								<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete<?= $value->id_barang ?>"><i class="fas fa-trash"></i></button>
+								
+								<?php if($value->status == 0) { ?>
+    								<a href="<?= base_url('barang/unhide/' . encrypt_url($value->id_barang)) ?>" class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>
+								<?php } else  { ?>
+    								<a href="<?= base_url('barang/hide/' . encrypt_url($value->id_barang)) ?>" class="btn btn-danger btn-sm"><i class="fas fa-eye-slash"></i></a>
+    							<?php } ?>
+								
 							</td>
 						</tr>
 					<?php } ?>
@@ -89,3 +98,14 @@
 		<!-- /.modal-dialog -->
 	</div>
 <?php } ?>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		var table = $('#example1').DataTable({
+                searching: false,
+                paging: false
+		});
+		
+		table.destroy();
+	});
+</script>

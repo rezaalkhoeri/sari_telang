@@ -2,7 +2,7 @@
     <!-- Main content -->
     <div class="card">
         <div class="card-header border-0">
-            <h3 class="card-title"> <i class="fas fa-bars"></i> Header Pesanan</h3>
+            <h3 class="card-title"> <i class="fas fa-bars"></i> Pesanan</h3>
         </div>
         <div class="card-body">
             <div class="row">
@@ -60,7 +60,7 @@
                         </ul>
                         <ul class="list-group list-group-unbordered mb-6 col-4 card-body box-profile">
                             <li class="list-group-item">
-                                <b>Ekspedisi</b> <a class="float-right"><?= $value->expedisi ?></a>
+                                <b>Kurir</b> <a class="float-right"><?= $value->expedisi ?></a>
                             </li>
                             <li class="list-group-item">
                                 <b>Paket</b> <a class="float-right"><?= $value->paket ?></a>
@@ -104,7 +104,7 @@
                     <thead>
                         <tr>
                             <th>Nama Barang</th>
-                            <th>Qty</th>
+                            <th>Jumlah</th>
                             <th>Harga</th>
                         </tr>
                     </thead>

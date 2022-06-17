@@ -47,6 +47,12 @@
 						<input type="number" name="berat" min="0" class="form-control" placeholder="Berat Dalam Satuan Gram" value="<?= set_value('berat') ?>">
 					</div>
 				</div>
+				<div class="col-sm-4">
+					<div class="form-group">
+						<label>Stok</label>
+						<input type="number" name="stok" min="0" class="form-control" placeholder="Stok Barang" value="<?= set_value('stok') ?>">
+					</div>
+				</div>				
 			</div>
 
 			<div class="form-group">

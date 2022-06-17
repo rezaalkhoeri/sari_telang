@@ -9,6 +9,8 @@ class M_home extends CI_Model
 		$this->db->select('*');
 		$this->db->from('tbl_barang');
 		$this->db->join('tbl_kategori', 'tbl_kategori.id_kategori = tbl_barang.id_kategori', 'left');
+        $this->db->where('tbl_barang.status', '1');
+        $this->db->where('tbl_barang.stok >', '0');
 		$this->db->order_by('tbl_barang.id_barang', 'desc');
 		return $this->db->get()->result();
 	}
@@ -52,6 +54,8 @@ class M_home extends CI_Model
 		$this->db->from('tbl_barang');
 		$this->db->join('tbl_kategori', 'tbl_kategori.id_kategori = tbl_barang.id_kategori', 'left');
 		$this->db->where('tbl_barang.id_kategori', $id_kategori);
+        $this->db->where('tbl_barang.status', '1');
+        $this->db->where('tbl_barang.stok >', '0');
 		return $this->db->get()->result();
 	}
 }

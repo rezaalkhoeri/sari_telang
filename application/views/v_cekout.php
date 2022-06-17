@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-12">
 			<h4>
-				<i class="fas fa-shopping-cart"></i> Check Out.
+				<i class="fas fa-shopping-cart"></i> Checkout
 				<small class="float-right">Tanggal : <?= date('d-m-Y') ?></small>
 			</h4>
 		</div>
@@ -21,7 +21,7 @@
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th>Qty</th>
+						<th>Jumlah</th>
 						<th width="150px" class="text-center">Harga</th>
 						<th>Barang</th>
 						<th class="text-center">Total Harga</th>
@@ -82,7 +82,7 @@
 
 				<div class="col-sm-6">
 					<div class="form-group">
-						<label>Expedisi</label>
+						<label>Kurir</label>
 						<select name="expedisi" class="form-control"></select>
 					</div>
 				</div>
@@ -93,13 +93,13 @@
 						<select name="paket" class="form-control"></select>
 					</div>
 				</div>
-				<div class="col-sm-8">
+				<div class="col-sm-12">
 					<div class="form-group">
 						<label>Alamat</label>
-						<input name="alamat" class="form-control" required>
+						<textarea name="alamat" class="form-control" required> </textarea>
 					</div>
 				</div>
-				<div class="col-sm-4">
+				<div class="col-sm-6">
 					<div class="form-group">
 						<label>Kode POS</label>
 						<input name="kode_pos" class="form-control" required>
@@ -113,7 +113,7 @@
 				</div>
 				<div class="col-sm-6">
 					<div class="form-group">
-						<label>HP Penerima</label>
+						<label>Kontak Penerima</label>
 						<input name="hp_penerima" class="form-control" required>
 					</div>
 				</div>
@@ -124,12 +124,16 @@
 			<div class="table-responsive">
 				<table class="table">
 					<tr>
-						<th style="width:50%">Grand Total:</th>
+						<th style="width:50%">Total:</th>
 						<th>Rp. <?php echo number_format($this->cart->total(), 0); ?></th>
 					</tr>
 					<tr>
 						<th>Berat:</th>
 						<th><?= $tot_berat ?> Gr</th>
+					</tr>
+					<tr>
+						<th>PPn (10%):</th>
+						<th> Rp. <?php echo number_format(10 * $this->cart->total() / 100, 0); ?> </th>
 					</tr>
 					<tr>
 						<th>Ongkir:</th>
@@ -167,7 +171,7 @@
 		<div class="col-12">
 			<a href="<?= base_url('belanja')  ?>" class="btn btn-warning"><i class="fas fa-backward"></i> Kembali Ke Keranjang</a>
 			<button type="submit" class="btn btn-primary float-right" style="margin-right: 5px;">
-				<i class="fas fa-shopping-cart"></i> Proses Checkout
+				<i class="fas fa-shopping-cart"></i> Checkout
 			</button>
 		</div>
 	</div>
@@ -241,7 +245,7 @@
 
 			$("#ongkir").html("Rp. " + ribuan_ongkir)
 			//menghitung totol Bayar
-			var data_total_bayar = parseInt(dataongkir) + parseInt(<?= $this->cart->total() ?>);
+			var data_total_bayar = parseInt(dataongkir) + parseInt(<?= $this->cart->total()  + (10 * $this->cart->total() / 100) ?>);
 			var reverse2 = data_total_bayar.toString().split('').reverse().join(''),
 				ribuan_total_bayar = reverse2.match(/\d{1,3}/g);
 			ribuan_total_bayar = ribuan_total_bayar.join(',').split('').reverse().join('');

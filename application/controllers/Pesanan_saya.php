@@ -16,17 +16,48 @@ class Pesanan_saya extends CI_Controller
 		$this->midtrans->config($params);
 	}
 
+	public function loop_produk($x)
+	{
+		$array = [];
+		$array['pesanan'] = $x;
+		$array['detail'] = [];
+
+		for ($i = 0; $i < count($x); $i++) {
+			$noOrder = $x[$i]->no_order;
+			$dataBarang = $this->m_transaksi->getPesananByOrder($noOrder);
+			array_push(
+				$array['detail'],
+				$dataBarang
+			);
+		}
+
+		return $array;
+	}
 
 	public function index()
 	{
+		$belum_bayar = $this->m_transaksi->belum_bayar();
+		$diproses = $this->m_transaksi->diproses();
+		$dikirim = $this->m_transaksi->dikirim();
+		$selesai = $this->m_transaksi->selesai();
+
+		$getBelumBayar = $this->loop_produk($belum_bayar);
+		$getDiproses = $this->loop_produk($diproses);
+		$getDikirim = $this->loop_produk($dikirim);
+		$getSelesai = $this->loop_produk($selesai);
+
 		$data = array(
 			'title' => 'Pesanan Saya',
-			'belum_bayar' => $this->m_transaksi->belum_bayar(),
-			'diproses' => $this->m_transaksi->diproses(),
-			'dikirim' => $this->m_transaksi->dikirim(),
-			'selesai' => $this->m_transaksi->selesai(),
+			'belum_bayar' => $getBelumBayar,
+			'diproses' => $getDiproses,
+			'dikirim' => $getDikirim,
+			'selesai' => $getSelesai,
 			'isi' => 'v_pesanan_saya',
 		);
+
+		// echo '<pre>', print_r($data, 1), '</pre>';
+		// die;
+
 		$this->load->view('layout/v_wrapper_frontend', $data, FALSE);
 	}
 
@@ -74,9 +105,12 @@ class Pesanan_saya extends CI_Controller
 		}
 
 		$getDetailTransaksi = $this->m_transaksi->detail_pesanan($id_transaksi);
+		$noOrder = $getDetailTransaksi->no_order;
+		$getBarang = $this->m_transaksi->getPesananByOrder($noOrder);
 		$data = array(
 			'title' => 'Pembayaran',
 			'pesanan' => $getDetailTransaksi,
+			'barang' => $getBarang,
 			'rekening' => $this->m_transaksi->rekening(),
 			'isi' => 'v_bayar',
 		);
@@ -128,5 +162,13 @@ class Pesanan_saya extends CI_Controller
 		// die;
 
 		$this->load->view('layout/v_wrapper_backend', $data, FALSE);
+	}
+
+	public function detail_barang()
+	{
+		$postData = json_decode($_POST['datanya']);
+		$dataBarang = $this->m_transaksi->getPesananByOrder($postData->noOrder);
+
+		echo json_encode($dataBarang);
 	}
 }

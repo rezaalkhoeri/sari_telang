@@ -20,7 +20,7 @@
 				<table class="table" cellpadding="6" cellspacing="1" style="width:100%">
 
 					<tr>
-						<th width="100px">QTY</th>
+						<th width="100px">Jumlah</th>
 						<th>Nama Barang</th>
 						<th style="text-align:right">Harga</th>
 						<th style="text-align:right">Sub-Total</th>
@@ -82,7 +82,7 @@
 
 				<button type="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Update Keranjang</button>
 				<a href="<?= base_url('belanja/clear') ?>" class="btn btn-danger btn-flat"><i class="fa fa-recycle"></i> Bersihkan Keranjang</a>
-				<a href="<?= base_url('belanja/cekout')  ?>" class="btn btn-success btn-flat"><i class="fa fa-check-square"></i> Check Out</a>
+				<a href="<?= base_url('belanja/cekout')  ?>" class="btn btn-success btn-flat"><i class="fa fa-check-square"></i> Checkout</a>
 				<?php echo form_close(); ?>
 				<br>
 			</div>

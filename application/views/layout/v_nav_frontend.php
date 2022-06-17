@@ -26,9 +26,11 @@
 
 					</ul>
 				</li>
-
 				<li class="nav-item">
 					<a href="https://wa.me/6282322850855?text=Halo Admin Sari Telang! Saya tertarik dengan produk sari telang" target="_blank" class="nav-link">Kontak</a>
+				</li>
+				<li class="nav-item">
+					<a href="<?= base_url() ?>assets/dokumen/Panduan Pembayaran Pembelian Produk Sari Telang.pdf" target="_blank" class="nav-link"> Cara Pembayaran </a>
 				</li>
 			</ul>
 
@@ -41,7 +43,7 @@
 			<li class="nav-item">
 				<?php if ($this->session->userdata('email') == "") { ?>
 					<a class="nav-link" href="<?= base_url('pelanggan/login') ?>">
-						<span class="brand-text font-weight-light">Login/Register</span>
+						<span class="brand-text font-weight-light">Masuk / Daftar</span>
 					</a>
 
 				<?php } else { ?>
@@ -63,7 +65,7 @@
 							<i class="fas fa-shopping-cart mr-2"></i>Pesanan Saya
 						</a>
 						<div class="dropdown-divider"></div>
-						<a href="<?= base_url('pelanggan/logout')  ?>" class="dropdown-item dropdown-footer">Log Out</a>
+						<a href="<?= base_url('pelanggan/logout')  ?>" class="dropdown-item dropdown-footer">Keluar</a>
 					</div>
 				<?php } ?>
 			</li>
@@ -79,7 +81,7 @@
 					<i class="fas fa-shopping-cart"></i>
 					<span class="badge badge-danger navbar-badge"><?= $jml_item ?></span>
 				</a>
-				<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+				<div class="dropdown-menu dropdown-menu-right">
 					<?php if (empty($keranjang)) { ?>
 						<a href="#" class="dropdown-item">
 							<p>Keranjang Belanja Kosong</p>
@@ -120,7 +122,7 @@
 
 						<div class="dropdown-divider"></div>
 						<a href="<?= base_url('belanja') ?>" class="dropdown-item dropdown-footer">Lihat Keranjang</a>
-						<a href="<?= base_url('belanja/cekout')  ?>" class="dropdown-item dropdown-footer">Check Out</a>
+						<a href="<?= base_url('belanja/cekout')  ?>" class="dropdown-item dropdown-footer">Checkout</a>
 					<?php } ?>
 				</div>
 			</li>
@@ -143,8 +145,8 @@
 				</div><!-- /.col -->
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
-						<li class="breadcrumb-item"><a href="<?= base_url('home') ?>">Toko Online</a></li>
-						<li class="breadcrumb-item"><a href=""><?= $title ?></a></li>
+						<!--<li class="breadcrumb-item"><a href="<?= base_url('home') ?>">Toko Online</a></li>-->
+						<!--<li class="breadcrumb-item"><a href=""><?= $title ?></a></li>-->
 					</ol>
 				</div><!-- /.col -->
 			</div><!-- /.row -->

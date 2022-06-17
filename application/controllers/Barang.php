@@ -38,6 +38,9 @@ class Barang extends CI_Controller
 		$this->form_validation->set_rules('berat', 'Berat', 'required', array(
 			'required' => '%s Haris Diisi !!!'
 		));
+		$this->form_validation->set_rules('stok', 'Stok', 'required', array(
+			'required' => '%s Haris Diisi !!!'
+		));
 		$this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required', array(
 			'required' => '%s Haris Diisi !!!'
 		));
@@ -67,8 +70,10 @@ class Barang extends CI_Controller
 					'id_kategori' => $this->input->post('id_kategori'),
 					'harga' => $this->input->post('harga'),
 					'berat' => $this->input->post('berat'),
+					'stok' => $this->input->post('stok'),
 					'deskripsi' => $this->input->post('deskripsi'),
 					'gambar'	=> $upload_data['uploads']['file_name'],
+					'status' => 1
 				);
 				$this->m_barang->add($data);
 				$this->session->set_flashdata('pesan', 'Data Berhasil Ditambahkan !!!');
@@ -77,7 +82,7 @@ class Barang extends CI_Controller
 		}
 
 		$data = array(
-			'title' => 'Add Barang',
+			'title' => 'Tambah Barang',
 			'kategori' => $this->m_kategori->get_all_data(),
 			'isi' => 'barang/v_add',
 		);
@@ -85,10 +90,20 @@ class Barang extends CI_Controller
 	}
 
 	//Update one item
-	public function edit($id_barang = NULL)
+	public function edit($id_barang)
 	{
 		$id_barang = decrypt_url($id_barang);
-
+		
+		$data = array(
+			'title' => 'Edit Barang',
+			'kategori' => $this->m_kategori->get_all_data(),
+			'barang'  => $this->m_barang->get_data($id_barang),
+			'isi' => 'barang/v_edit',
+		);
+		$this->load->view('layout/v_wrapper_backend', $data, FALSE);
+	}
+	
+	public function update($id_barang){
 		$this->form_validation->set_rules('nama_barang', 'Nama Barang', 'required', array(
 			'required' => '%s Haris Diisi !!!'
 		));
@@ -101,6 +116,10 @@ class Barang extends CI_Controller
 		$this->form_validation->set_rules('berat', 'Berat', 'required', array(
 			'required' => '%s Haris Diisi !!!'
 		));
+		$this->form_validation->set_rules('stok', 'Stok', 'required', array(
+			'required' => '%s Haris Diisi !!!'
+		));
+
 		$this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required', array(
 			'required' => '%s Haris Diisi !!!'
 		));
@@ -112,6 +131,7 @@ class Barang extends CI_Controller
 			$config['max_size']     = '2000';
 			$this->upload->initialize($config);
 			$field_name = "gambar";
+			
 			if (!$this->upload->do_upload($field_name)) {
 				$data = array(
 					'title' => 'Edit Barang',
@@ -133,13 +153,15 @@ class Barang extends CI_Controller
 				$config['source_image'] = './assets/gambar/' . $upload_data['uploads']['file_name'];
 				$this->load->library('image_lib', $config);
 				$data = array(
-					'id_barang'	  => $id_barang,
+					'id_barang' => $id_barang,
 					'nama_barang' => $this->input->post('nama_barang'),
 					'id_kategori' => $this->input->post('id_kategori'),
 					'harga' => $this->input->post('harga'),
 					'berat' => $this->input->post('berat'),
+					'stok' => $this->input->post('stok'),
 					'deskripsi' => $this->input->post('deskripsi'),
 					'gambar'	=> $upload_data['uploads']['file_name'],
+					'status' => 1
 				);
 				$this->m_barang->edit($data);
 				$this->session->set_flashdata('pesan', 'Data Berhasil Diganti !!!');
@@ -147,25 +169,19 @@ class Barang extends CI_Controller
 			}
 			//jika tanpa ganti gambar
 			$data = array(
-				'id_barang'	  => $id_barang,
+				'id_barang' => $id_barang,
 				'nama_barang' => $this->input->post('nama_barang'),
 				'id_kategori' => $this->input->post('id_kategori'),
 				'harga' => $this->input->post('harga'),
 				'berat' => $this->input->post('berat'),
+				'stok' => $this->input->post('stok'),
 				'deskripsi' => $this->input->post('deskripsi'),
 			);
+			
 			$this->m_barang->edit($data);
 			$this->session->set_flashdata('pesan', 'Data Berhasil Diganti !!!');
 			redirect('barang');
 		}
-
-		$data = array(
-			'title' => 'Edit Barang',
-			'kategori' => $this->m_kategori->get_all_data(),
-			'barang'  => $this->m_barang->get_data($id_barang),
-			'isi' => 'barang/v_edit',
-		);
-		$this->load->view('layout/v_wrapper_backend', $data, FALSE);
 	}
 
 	//Delete one item
@@ -182,6 +198,40 @@ class Barang extends CI_Controller
 		$this->session->set_flashdata('pesan', 'Data Berhasil Dihapus !!!');
 		redirect('barang');
 	}
+	
+	public function hide($id_barang = NULL)
+	{
+		$id_barang = decrypt_url($id_barang);
+		//hapus gambar
+		$barang = $this->m_barang->get_data($id_barang);
+
+		$data = array(
+			'id_barang'	  => $id_barang,
+			'status' => 0,
+		);
+		
+		$this->m_barang->edit($data);
+		$this->session->set_flashdata('pesan', 'Barang berhasil dinonaktifkan !!!');
+		redirect('barang');
+	}
+	
+	public function unhide($id_barang = NULL)
+	{
+		$id_barang = decrypt_url($id_barang);
+		//hapus gambar
+		$barang = $this->m_barang->get_data($id_barang);
+
+		$data = array(
+			'id_barang'	  => $id_barang,
+			'status' => 1,
+		);
+		
+		$this->m_barang->edit($data);
+		$this->session->set_flashdata('pesan', 'Barang berhasil aktifkan !!!');
+		redirect('barang');
+	}	
+	
+	
 }
 
 /* End of file Barang.php */

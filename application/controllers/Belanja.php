@@ -81,7 +81,7 @@ class Belanja extends CI_Controller
 		));
 		if ($this->form_validation->run() == FALSE) {
 			$data = array(
-				'title' => 'Cek Out Belanja',
+				'title' => 'Checkout',
 				'isi' => 'v_cekout',
 			);
 			$this->load->view('layout/v_wrapper_frontend', $data, FALSE);

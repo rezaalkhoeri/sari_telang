@@ -2,7 +2,7 @@
 	<!-- general form elements disabled -->
 	<div class="card card-primary">
 		<div class="card-header">
-			<h3 class="card-title">Seting Website</h3>
+			<h3 class="card-title">Pengaturan Website</h3>
 		</div>
 		<!-- /.card-header -->
 		<div class="card-body">
@@ -45,7 +45,7 @@
 				</div>
 				<div class="col-sm-6">
 					<div class="form-group">
-						<label>No Telpon</label>
+						<label>No Telepon</label>
 						<input type="text" name="no_telpon" value="<?= $setting->no_telpon ?>" class="form-control" required>
 					</div>
 				</div>
